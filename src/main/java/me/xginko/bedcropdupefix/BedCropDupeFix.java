@@ -55,15 +55,8 @@ public final class BedCropDupeFix extends JavaPlugin implements Listener {
     private HashSet<Block> getAdjacentBlocks(Location clickedBlockLocation, BlockFace blockFace) {
         HashSet<Block> adjacentBlocks = new HashSet<>();
 
-        int modX = blockFace.getModX();
-        int modY = blockFace.getModY();
-        int modZ = blockFace.getModZ();
-        Vector direction = new Vector(modX, modY, modZ);
-        if (modX != 0 || modY != 0 || modZ != 0) {
-            direction.normalize();
-        }
+        Location searchLocation = clickedBlockLocation.add(getDirection(blockFace));
 
-        Location searchLocation = clickedBlockLocation.add(direction);
         adjacentBlocks.add(searchLocation.add(0, -1, 0).getBlock()); // Down
         adjacentBlocks.add(searchLocation.add(0, 2, 0).getBlock()); // Up
         adjacentBlocks.add(searchLocation.add(-1, -1, 0).getBlock()); // Left
@@ -72,5 +65,16 @@ public final class BedCropDupeFix extends JavaPlugin implements Listener {
         adjacentBlocks.add(searchLocation.add(0, 0, -2).getBlock()); // Downward
 
         return adjacentBlocks;
+    }
+
+    private Vector getDirection(BlockFace blockFace) {
+        int modX = blockFace.getModX();
+        int modY = blockFace.getModY();
+        int modZ = blockFace.getModZ();
+        Vector direction = new Vector(modX, modY, modZ);
+        if (modX != 0 || modY != 0 || modZ != 0) {
+            direction.normalize();
+        }
+        return direction;
     }
 }
