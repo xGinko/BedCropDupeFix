@@ -59,12 +59,12 @@ public final class BedCropDupeFix extends JavaPlugin implements Listener {
     private HashSet<Block> getAdjacentBlocks(Location clickedBlockLocation, BlockFace blockFace) {
         HashSet<Block> adjacentBlocks = new HashSet<>();
         Location searchLocation = clickedBlockLocation.add(getDirection(blockFace));
-        adjacentBlocks.add(searchLocation.add(0, -1, 0).getBlock()); // Down
-        adjacentBlocks.add(searchLocation.add(0, 2, 0).getBlock()); // Up
-        adjacentBlocks.add(searchLocation.add(-1, -1, 0).getBlock()); // Left
-        adjacentBlocks.add(searchLocation.add(2, 0, 0).getBlock()); // Right
-        adjacentBlocks.add(searchLocation.add(-1, 0, 1).getBlock()); // Forward
-        adjacentBlocks.add(searchLocation.add(0, 0, -2).getBlock()); // Downward
+        adjacentBlocks.add(searchLocation.add(0,-1,0).getBlock()); // Down
+        adjacentBlocks.add(searchLocation.add(0,2,0).getBlock()); // Up
+        adjacentBlocks.add(searchLocation.add(-1,-1,0).getBlock()); // Left
+        adjacentBlocks.add(searchLocation.add(2,0,0).getBlock()); // Right
+        adjacentBlocks.add(searchLocation.add(-1,0,1).getBlock()); // Forward
+        adjacentBlocks.add(searchLocation.add(0,0,-2).getBlock()); // Downward
         return adjacentBlocks;
     }
 
