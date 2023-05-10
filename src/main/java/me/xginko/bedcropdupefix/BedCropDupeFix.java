@@ -80,11 +80,8 @@ public final class BedCropDupeFix extends JavaPlugin implements Listener {
     }
 
     private BlockFace getYawBlockFace(Player player) {
-        float yaw = player.getLocation().getYaw();
-        double rotation = (yaw - 90) % 360;
-        if (rotation < 0) {
-            rotation += 360.0;
-        }
+        double rotation = (player.getLocation().getYaw() - 90) % 360;
+        if (rotation < 0) rotation += 360.0;
         if (0 <= rotation && rotation < 45) {
             return BlockFace.WEST;
         } else if (45 <= rotation && rotation < 135) {
